@@ -1,0 +1,251 @@
+*{
+    margin:0px;
+    font-family:arial;
+    box-sizing:border-box;
+}
+body{
+    background-image:url("images/amazonbg.jpg");
+    background-position-y: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size:100%;
+}
+.navbar{
+    background-color:rgb(21, 26, 48);
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+}
+.hover:hover{
+    border: 1px solid white;
+}
+.navlogo{
+    height:50px;
+    width:100px;
+}
+.logo{
+    height:50px;
+    width:90px;
+    margin:5px;
+    background-image:url("images/amazonlogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.adress{
+    height:50px;
+    width:125px;
+    display:flex;
+    align-items:center;
+}
+.loc-logo{
+    color:white;
+    margin-top:10px;
+    margin-left:15px;
+}
+.deliver{
+    color:white;
+    font-size:1rem;
+}
+.india{
+    color:white;
+    font-size:1.3rem;
+}
+.searchbar{
+    width:650px;
+    display:flex;
+}
+.all{
+    height:40px;
+    width:50px;
+    font-size:14px;
+    border-radius:5px 0px 0px 5px;
+    
+}
+.search{
+    display:flex;
+    height:40px;
+    flex-grow:1;
+    max-width:550px;
+    padding-left:10px;
+    background-color:#ffffff;
+    align-items:center;
+}
+.searchlogo{
+    width:50px;
+    height:40px;
+    background-color:rgb(228, 153, 13);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 0px 5px 5px 0px;
+}
+.greet{
+    width:130px;
+    height:50px;
+    margin-left:10px;
+    padding-left:10px;
+}
+.hello{
+    margin-top:6px;
+    color:white;
+    font-size:0.8rem;
+}
+.accounts{
+    color:white;
+    font-size:1rem;
+}
+.orders{
+    width:80px;
+    height:50px;
+    margin-left:10px;
+    padding-left:10px;
+}
+.returns{
+    margin:6px;
+    color:white;
+    font-size:0.8rem;
+}
+.order{
+    color:white;
+    font-size:1rem;
+}
+.shopping{
+    width:100px;
+    height:50px;
+    display:flex;
+}
+
+.shopicon{
+    color:white;
+    font-size:30px;
+    padding:6px;
+}
+.cart{
+    color:white;
+    font-size:1.1rem;
+    padding:15px;
+}
+.details{
+    display:flex;
+    align-items:center;
+    height:40px;
+    background-color:#252530;
+}
+#all{
+    margin:10px;
+    color:white;
+    height:40px;
+    align-content:center;
+}
+.menulogo{
+    margin-right:10px;
+}
+.p{
+    align-content:center;
+    margin-left:20px;
+    height:40px;
+    color:white;
+    font-size:0.9rem;
+}
+.massage{
+    height:40px;
+    text-align:center;
+    align-content: center;
+    font-size:14px;
+    background-color:rgb(206, 195, 195);
+    margin-top:300px;
+}
+.box1{
+    display:inline-block;
+    height:400px;
+    width:300px;
+    background-color:white;
+    margin:10px;
+
+}
+.boxheading{
+    margin-left:20px;
+    padding-top:20px;
+    font-size:1.2rem;
+    font-weight:800;
+}
+.boxlink{
+    margin:  20px;
+    font-size:0.9rem;
+    margin-bottom:10px;
+    text-decoration:none;
+}
+.cpu{
+    align-content:center;
+    margin-left:20px;
+    margin-top:40px;
+    height:280px;
+    width:270px;
+}
+.fourimages{
+    margin-top:40px;
+    width:100%
+}
+.pic{
+    height:130px;
+    width:140px;
+}
+.oneline{
+    display:flex;
+    height:200px;
+    justify-content:space-evenly;
+}
+.ch{
+    font-size:1.3rem;
+
+}
+.back{
+    margin-top:80px;
+    text-align:center;
+    align-content: center;
+    background-color:#3b3b7a;
+    height:40px;
+    width:100%;
+    color:white;
+    font-size:14px;
+}
+.footerpanel2{
+    padding-top:40px;
+    background-color:#2b2b5a;
+    color:white;
+    font-size:14px;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+ul{
+    font-size:14px;
+    margin-bottom:10px;
+}
+.firstul{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+.lastlogo{
+    width:100%;
+    height:80px;
+    display:flex;
+    background-color:#252530;
+    justify-content:center;
+    align-items:center;
+}
+.lastpanel{
+    width:100%;
+    height:100px;
+    background-color:#2b2b5a;
+    color:white;
+    align-content:center;
+    text-align:center;
+}
+.lastdiv{
+    margin-top:30px;
+}
