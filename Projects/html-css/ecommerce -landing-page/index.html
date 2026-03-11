@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHaven</title>
+</head>
+<style> 
+*{
+    margin:0px;
+    box-sizing:border-box;
+}
+h1{
+    background-color:#f0f0f0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding:20px;
+    font-style:oblique;
+    color:red;
+    text-shadow: 5px 5px 5px rgb(0, 0, 0);
+}
+.products{
+    display:flex;
+    width:100%;
+    gap:50px;
+    justify-content: center;
+    margin-top:50px;
+    flex-wrap: wrap;
+}
+.product{
+    display:flex;
+    height:auto;
+    width:340px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color:#f0f0f0;
+    transition: all 1s ease-in;
+    box-shadow: 5px 5px 15px;
+}
+.product:hover{
+    transform: scale(1.1);
+}
+
+img{
+    height:340px;
+    width:100%;
+    object-fit: cover;
+}
+.name{
+    width:100%;
+    display:flex;
+    padding-left:25px;
+    padding-right:25px;
+    margin-bottom:15px;
+    justify-content: space-between;
+}
+footer{
+    margin-top:20px;
+    height:100px;
+    text-align: center;
+    background-color: #630d0d;
+}
+@media only screen and (max-width:800px){
+h1{
+    text-align: center;
+}
+}
+@media only screen and (max-width:380px){
+.product{
+    height:auto;
+    width:90%;
+}
+img{
+    height:auto;
+    width:100%;
+}
+h1{
+    font-size:25px;
+}
+}
+</style>
+
+<body>
+    <h1>Welcome to TechHaven</h1>
+<main>
+    <div class="products">
+        <div class="product"><img src="Images/akhil-yerabati-Q2uV5TkjNz8-unsplash.jpg">
+            <div class="name">
+                <span> Headset </span>
+                <span> $499</span>
+            </div>
+        </div>
+        <div class="product"><img src="Images/ales-nesetril-Im7lZjxeLhg-unsplash.jpg">          
+            <div class="name">
+            <span> Laptop </span>
+            <span> $899</span>
+        </div> 
+        </div>
+        <div class="product"><img alt="descriptionblabla" src="Images/daniel-romero-AgLMrojqjAM-unsplash.jpg"> 
+            <div class="name">
+                <span> Ear Phones </span>
+                <span> $199</span>
+            </div>
+         </div>
+        <div class="product"><img src="Images/martin-sanchez-Gx34eWExGD8-unsplash.jpg">          
+           <div class="name">
+            <span> I phone </span>
+            <span> $999</span>
+        </div>  
+     </div>
+        <div class="product"><img src="Images/emilipothese-R4WCbazrD1g-unsplash.jpg">        
+            <div class="name">
+            <span> AI robo </span>
+            <span> $1500</span>
+        </div>
+    </div>
+        <div class="product"><img src="Images/paul-gaudriault-cwy9yVBBPxg-unsplash.jpg">       
+             <div class="name">
+            <span> Camera </span>
+            <span> $299</span>
+        </div>   
+    </div>
+    </div>
+</main>
+    <footer>
+        <p>@2025TechHevens all rights reserved</p>
+    </footer>
+</body>
+</html>
