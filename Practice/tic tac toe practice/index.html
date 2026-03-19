@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin :0;
+            padding :0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            background-color:rgb(102, 139, 139);
+        }
+        .container{
+            height: 200px;
+            width: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            gap:10px;
+            position:relative;
+        }
+        .new_game{
+            border-radius: 15px;
+            border: 2px solid black;
+            background-color:rgb(23, 87, 87);
+            color:white;
+            width:100px;
+        }
+        .box{
+            display:flex;
+            background-color: aqua;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            border-radius: 13px;
+            border:2px solid black;
+            color:black;
+            justify-content: center;
+            align-items: center;
+        }
+        .hide{
+            display:none;
+        }
+
+        .blur{
+            opacity: 0.04;
+        }
+        .winner{
+            position:absolute;
+            padding-top: 100px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div> <h1>Tic Tac Toe</h1> </div> 
+       <button class="new_game">New Game</button>
+       <h2 class="winner hide">Winner : </h2>
+     <div class="container ">
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+        <button class="box"></button>
+    </div>
+</body>
+<script>
+    let boxes = document.querySelectorAll(".box");
+    let winner = document.querySelector(".winner");
+    let container = document.querySelector(".container");
+    let new_game = document.querySelector(".new_game");
+    let turn0 = true;
+    let click = 0;
+    const win_pattern =[
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6],
+    ]
+
+    function Clear(){
+        boxes.forEach((box)=>{
+            box.innerText="";
+            box.disabled=false;
+        });
+        winner.classList.add("hide");
+        container.classList.remove("blur");
+        new_game.innerText="New Game";
+        turn0=true;
+        click = 0;
+    }   
+    new_game.addEventListener("click",Clear);
+
+    boxes.forEach((box)=>{
+        function handler(e){
+            if(turn0){
+                box.innerText="0";
+                turn0=false;
+            }else{
+                box.innerText="X";
+                turn0=true;
+            }
+            box.disabled=true;
+            new_game.innerText="Reset";
+            click++;
+            check_winner();
+        }
+        box.addEventListener("click",handler);
+    });
+
+    function check_winner(){
+        let iswinner = false;
+        for(let pattern of win_pattern){
+           post1 = boxes[pattern[0]].innerText;
+           post2 = boxes[pattern[1]].innerText;
+           post3 = boxes[pattern[2]].innerText;
+           if(post1 !="" && post2 !="" && post3 !=""){
+                if(post1 == post2 && post2 == post3){
+                winner.innerHTML= `<h1>Winner: ${post1}</h1>`;
+                    winner.classList.remove("hide");
+                    container.classList.add("blur");
+                    new_game.innerText="New Game";
+                    click=0;
+                    iswinner = true;
+                    boxes.forEach((box)=>{
+                        box.disabled = true;
+                    });
+                    break;
+                }
+           }
+        }
+            if(!iswinner && click === 9){
+                  winner.innerHTML= `<h1>Draw!</h1>`;
+                   winner.classList.remove("hide");
+                   container.classList.add("blur");
+                   new_game.innerText="New Game";
+                   click = 0;
+                }
+    }
+</script>
+</html>
