@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding:0px;
+            border:0px;
+        }
+        h1{
+            text-align: center;
+            width: 100%;
+            background-color: rgb(69, 61, 145);
+            color:white;
+        }
+        .choices{
+            display:flex;
+            justify-content: space-evenly;
+            position: relative;
+            align-items: center;
+        }
+        .choice{
+            height: 200px;
+            width: 200px; 
+            border: 0.5px solid black;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .choice:hover{
+            border: 2.5px solid black;
+            opacity:0.5;
+            cursor:pointer;
+        
+        }
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            
+        }
+        .result{
+            display:flex;
+            padding-top:50px;
+            justify-content: space-evenly;
+        }
+        .show{
+            background-color: rgb(247, 247, 247);
+            width:100%;
+            display:flex;
+            justify-content: center;
+        }
+        .show_result{
+            background-color: rgb(69, 61, 145);
+            color:white;
+            width:auto;
+            height:auto ;
+            font-size: x-large;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stone Paper scissor</h1>
+    <div class="choices">
+        <div class="choice" id="stone"> <img src="stone.jpg" alt="image"> stone </div>
+        <div class="choice" id="paper"> <img src="paper.jpg" alt="image"> </div>
+        <div class="choice" id="scissor"> <img src="scissor.jpg" alt="image"> </div>
+    </div>
+    
+    <div class="result">
+        <div> <p class="my_score" >0</p> <p>You</p> </div>
+        <div> <p class="comp_score">0</p> <p>Jarvis</p> </div>
+    </div>
+    <div class="show"> <div class="show_result"> Play your Move</div> </div>
+</body>
+<script>
+
+ let my_choice;
+ let jarvis_choice;
+ 
+ let comp_score = document.querySelector(".comp_score").innerText;
+ let show_res = document.querySelector(".show_result");
+
+
+ function computer_choice(){
+    let arr =["stone","paper","scissor"];
+    return arr[Math.floor(Math.random()*3)];
+}
+
+ let choices = document.querySelectorAll(".choice");
+ choices.forEach((choice)=>{
+    choice.addEventListener("click",()=>{
+         my_choice =  choice.getAttribute("id");
+         jarvis_choice = computer_choice();
+        // Game Logic
+          if(my_choice == jarvis_choice){
+            draw();
+    }else if(my_choice == "stone"){
+        if(jarvis_choice=="paper"){
+            jarvis_won();
+        }else{
+            you_won();
+        }
+    }else if(my_choice == "paper"){
+        if(jarvis_choice == "scissor"){
+            jarvis_won();
+        }else{
+            you_won();
+        }
+    }else if(my_choice =="scissor"){
+        if(jarvis_choice == "stone"){
+            jarvis_won();
+        }else{
+            you_won();
+        }
+    }
+    });
+ });
+
+ function draw(){
+    show_res.innerHTML =`Draw ! <br> you & Jarvis choose ${my_choice}`;
+     show_res.style.backgroundColor = " rgb(69, 61, 145) ";
+
+ }
+ function you_won(){
+    show_res.innerHTML = `You won ! <br> you = ${my_choice} & Jarvis = ${jarvis_choice}`;
+    show_res.style.backgroundColor="green";
+    let my_score= document.querySelector(".my_score");
+    my_score.innerText = Number(my_score.innerText) + 1;
+ }
+ 
+ function jarvis_won(){
+    show_res.innerHTML = `You loose ! <br> Jarvis = ${jarvis_choice} & you = ${my_choice}`;
+    show_res.style.backgroundColor="red";
+    let comp_score = document.querySelector(".comp_score");
+    comp_score.innerText = Number(comp_score.innerText) + 1;
+ }
+
+
+</script>
+</html>
