@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+</head>
+<style>
+    *{
+        margin : 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    header{
+        text-align: center;
+    }
+    .container{
+        text-align: center;
+        margin-top: 60px;
+    }
+    .card{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .list{
+        display:flex;
+        flex-direction: column;
+        overflow-y:auto;
+        height: 70vh;
+        width: 40vw;
+        word-wrap: break-word;
+        padding-top: 5px;
+        background-color: rgb(241, 241, 241);
+        box-shadow: 2px 2px 1px grey;
+        
+    }
+    #input{
+        font-size: larger;
+        border: none;
+        background-color: rgb(221, 221, 221);
+        padding:8px;
+    }
+    .add{
+        font-size: large;
+        border:none;
+         background-color: rgb(221, 221, 221);
+         padding:8px;
+    }
+    
+</style>
+<body>
+    <header> 
+        <h1>To Do List</h1>
+    </header>
+    <div class="container">
+        <input type="text" id="input" placeholder="Add Tasks...">
+        <button class="add">Add</button>
+        <div class="card">
+            <ul class="list">
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script> 
+let input = document.querySelector("#input");
+let button = document.querySelector("button")
+let list = document.querySelector(".list");
+
+//code for enter button
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    if (input.value.trim() === "") {
+      alert("Write something");  // Show alert once
+    } else {
+      button.click();  // Only trigger add if valid input
+    }
+  }
+});
+
+//code for displaying tasks
+button.addEventListener("click",()=>{
+    let li = document.createElement("li");
+    let box = document.createElement("input");
+    box.type="checkbox";
+    let span = document.createElement("span");
+    span.textContent=input.value;
+    let del = document.createElement("button");
+    del.textContent="Delete";
+
+    
+
+li.append(box);
+li.append(span);
+li.append(del); 
+del.style.height="30px"
+del.style.width="60px";
+li.style.display="flex";
+li.style.justifyContent="space-between";
+li.style.alignItems="center"
+li.style.gap="10px";
+li.style.fontSize="large";
+li.style.padding="4px 18px 4px 18px"
+
+
+
+    if(input.value===""){
+    alert("atleast write something");
+    return;
+}
+    else{
+    list.append(li);
+    input.value=""; 
+}
+
+
+//code for deletition
+del.addEventListener("click",(e)=>{
+    e.target.parentElement.remove();
+});
+
+
+//code for line-through
+box.addEventListener("click",()=>{
+    if(box.checked){
+        span.style.textDecoration = "line-through";
+        span.style.fontStyle="Italic";
+        li.style.backgroundColor="rgba(255,0,0,0.4)";}
+    else{
+        span.style.textDecoration="none";
+        li.style.backgroundColor="";
+    }
+});
+});
+
+</script>
+</html>
