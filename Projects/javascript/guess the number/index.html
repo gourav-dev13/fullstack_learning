@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number</title>
+</head>
+<style>
+    body{
+        background-color: rgb(97, 97, 97);
+        color: white;
+        height:95vh;
+        width: 95vw;
+        text-align: center;
+    }
+    .container{
+        display:flex;
+        gap:25px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        width: 90%;
+        position: relative;
+    }
+    .content{
+        height:fit-content;
+        width: 50vw;
+        text-align: center;
+    }
+    .button{
+        background-color: black;
+        color: white;
+        height: 50px;
+        width: 140px;
+        border-radius: 10px;
+    }
+    .result{
+        text-align: center;
+    }
+    .dialog-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease
+    ;
+    z-index: 1000;
+}
+    .dialog-box.show {
+    opacity: 1;
+    visibility: visible;
+}
+</style>
+<body>
+
+<div class="container">
+    <div class="dialog-box" id="dialog">
+        <p id="message">You won!</p>
+    </div>
+    <div class="content">
+        <p>Guess the random number between 1 to 10</p>
+        <p>You have 3 attempts to guess the right number</p>
+        <h1>Guess a number</h1>
+        <input id="input" type="number">
+    </div>
+     <div class="result">
+        <button class="button">Submit guess</button>
+        <p id="privious">Previous guesses : </p>
+        <p id="remening">Remaining Tries : 3</p>
+        </div>
+        <button class="again button">Play Again</button>
+</div>
+</body>
+<script>
+    let button = document.querySelector(".button");
+    let Previous=document.querySelector("#privious");
+    let remaining=document.querySelector("#remening");
+    let input = document.querySelector("#input");
+    let again = document.querySelector(".again");
+
+    let count = 3;
+
+
+    function showDialog(message){
+    const dialog = document.getElementById('dialog');
+    const msg = document.getElementById('message');
+    msg.textContent = message;
+    dialog.classList.add('show');
+}
+
+
+    let random = (Math.floor(Math.random() * 10) + 1);
+    console.log(`random no. is ${random}`);
+
+
+    //basic restrictions for input!! 
+    function checkinput(input){
+        if(input== "" || input< 1 || input > 10){
+            alert("empty space and number outside of 1-10 is not allowed")
+        }
+        else{
+            check_guess(input);
+        }
+    }
+
+    //actual logic to check win or lose!!
+    function check_guess(num){
+        if(num == random){
+           showDialog("🎉 You Won!")
+            setTimeout(endGame, 3000);
+        } 
+        else{
+            count--;
+            prev();
+            input.value="";
+            remaining.innerHTML=`<span>Remaining Tries: ${count}</span>`;
+
+            if(count=== 0){
+               showDialog(`💀 You Lose! Number was ${random}`);
+               input.removeEventListener("keydown",handle_enterEvent);
+                setTimeout(endGame,3000);
+            }
+        }
+    }
+
+    //previous guesses shown
+    function prev(){
+    Previous.innerHTML+=`<span>${input.value}:</span>`;
+    }
+
+    
+
+    // logic of ending game
+    function endGame(){
+        // input.value="";
+        // count=10;
+        // Previous.innerHTML=`Previous guesses : `
+        // remaining.innerHTML=`Remaining Tries : 10 `
+        //  let random = (Math.floor(Math.random() * 100) + 1);
+        //  console.log(`random number is ${random}`);
+         window.location.reload();
+    }
+
+    //submit handles data
+    button.addEventListener('click',()=>{
+        checkinput(input.value);
+    });
+
+    function handle_enterEvent(e){
+        if(e.key==="Enter"){
+            checkinput(input.value);
+        }
+    }
+   input.addEventListener("keydown", handle_enterEvent);
+    again.addEventListener('click',endGame );
+
+</script>
+</html>
