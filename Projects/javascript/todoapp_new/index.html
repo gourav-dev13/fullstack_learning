@@ -138,17 +138,22 @@ box.addEventListener("change",()=>{
             storeinLocal();
         });
 
-//if 24 hours passes away///////////////////////////////////////////////////////////////////////////////////////////////
-function expire(){
-    let timer = Date.now();
-    let expireTime =  500;
-    if (timer - taskObj.b > expireTime){
-       tasks=tasks.filter( task => task);
-       storeinLocal();
-    }
+
+function expire() {
+    const now = Date.now();
+    const expireTime = 15000; // Expires in 15sec
+
+    tasks = tasks.filter(task => {
+        return (now - task.createdAt) < expireTime; 
+    });
+
+    storeinLocal();
+    list.innerHTML = "";
+    tasks.forEach(t => showtasks(t)); // shows tasks which are in tasks arr
 }
 
-expire();
+setInterval(expire,5000);
+
 }
 
 
@@ -158,15 +163,13 @@ expire();
             alert("write some tasks..");
         }
         else{
-            let a = new Date();  
-            let date = a.toLocaleDateString();
-            let time = a.toLocaleTimeString();
-
+            let a = new Date();
             const taskobj = {
-                text : input.value,
-                complete: false,
-                date : date,
-                time: time,
+            text : input.value,
+            complete: false,
+            date : a.toLocaleDateString(),
+            time : a.toLocaleTimeString(),
+            createdAt: Date.now(),
             }
             showtasks(taskobj);
             tasks.push(taskobj);
